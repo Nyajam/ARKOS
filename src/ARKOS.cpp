@@ -7,11 +7,12 @@
   Library core.
 */
 
-#ifndef ARKOS_C
-#define ARKOS_C 1
-
 #include <Arduino.h>
 #include "ARKOS.h"
+
+//Variables globals
+PCB ARKOS_PCB_LIST[ARKOS_SIZE_LIST_PCB]; //Table of processes
+PCB* ARKOS_PCB_RUN; //List of processes pending execution, first is executing
 
 //Functions - implementations
 void voidPcbs()
@@ -28,7 +29,7 @@ void voidPcbs()
   ARKOS_PCB_RUN=NULL;  
 }
 
-void chargePrograms(void (**programas))
+void chargePrograms(void (**programas)())
 {
   //ignore the more programs that ARKOS_SIZE_LIST_PCB says
   for(int i=0;i<ARKOS_SIZE_LIST_PCB;i++)
@@ -123,5 +124,3 @@ void sleep(unsigned long time)
     myPCB()->actionTime=millis()+time;
   }
 }
-
-#endif

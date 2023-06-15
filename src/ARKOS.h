@@ -31,17 +31,12 @@ typedef struct PCB_t
   struct PCB_t* next; //next process for the process list
 } PCB;
 
-//Variables globals
-PCB ARKOS_PCB_LIST[ARKOS_SIZE_LIST_PCB]; //Table of processes
-PCB* ARKOS_PCB_RUN; //List of processes pending execution, first is executing
-
 //Functions - headers
 void voidPcbs(); //initialize the table of process
-void chargePrograms(void (**programas)); //Charge the programs of the table of process
+void chargePrograms(void (**programas)()); //Charge the programs of the table of process
 void planner(PCB* pcb); //process scheduler
 void run(); //execute the process
 PCB* myPCB(); //return the PCB of the process
 void sleep(unsigned long time); //set the time to wake the process
 
-#include "ARKOS.c"
 #endif

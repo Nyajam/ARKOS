@@ -23,7 +23,7 @@ void blinking(); //The functions in role of programs, have a void return and the
 void setup()
 {
   //initialize of ARKOS
-  void (*programs[])={
+  void (*programs[])()={
     blinking,
     blinking,
     blinking,
@@ -62,7 +62,7 @@ void blinking()
   {
     Serial.print("Start blink:"); //For debug in terminal
     Serial.println(pcb->id+1); //For debug in terminal
-    pcb->data=malloc(1*sizeof(ARKOS_TYPE_DATA_PCB)); //the space of save variables in the PCB
+    pcb->data=(ARKOS_TYPE_DATA_PCB*)malloc(1*sizeof(ARKOS_TYPE_DATA_PCB)); //the space of save variables in the PCB
     pcb->data[0]=LOW; //start state of led
   }
 

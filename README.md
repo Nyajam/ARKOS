@@ -71,7 +71,7 @@ void myFunction()
 		return;
 	if(pcb->data == NULL) //First time execute
 	{
-		pcb->data=malloc(1*sizeof(ARKOS_TYPE_DATA_PCB)); //Reserve data memory
+		pcb->data=(ARKOS_TYPE_DATA_PCB*)alloc(1*sizeof(ARKOS_TYPE_DATA_PCB)); //Reserve data memory
 		pcb->data[0]=0;
 	}
 	switch(pcb->data[0])
@@ -111,7 +111,7 @@ It is very simple:
 
 void setup()
 {
-	void (*programs[])={
+	void (*programs[])()={
 		myFunction,
 		NULL}; //List of the "programs", the functions.
 	voidPcbs(); //initialize the table of process
